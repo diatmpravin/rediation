@@ -1,0 +1,16 @@
+<h1>Editing pravin</h1>
+
+<% form_for(@pravin) do |f| %>
+  <%= f.error_messages %>
+
+  <p>
+    <%= f.label :name %><br />
+    <%= f.text_field :name %>
+  </p>
+  <p>
+    <%= f.submit 'Update' %>
+  </p>
+<% end %>
+
+<%= link_to 'Show', @pravin %> |
+<%= link_to 'Back', pravins_path %>

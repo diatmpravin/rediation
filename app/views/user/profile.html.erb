@@ -1,0 +1,44 @@
+
+<div id="asd"><h1>Blogger Details are hear</h1></div>
+<table>
+<% @users.each do |u| %>
+
+<tr><td>
+  <b>First Name:</b>
+  <%=h u.first_name %>
+</td></tr>
+
+<tr><td>
+  <b>Last Name:</b>
+  <%=h u.last_name %>
+</td></tr>
+
+<tr><td>
+  <b>Email:</b>
+  <%=h u.email %>
+</td></tr>
+
+<tr><td>
+  <b>Phone:</b>
+  <%=h u.phone %>
+</td></tr>
+
+<tr><td><div id="vote_score">
+  <b><font color="red">Vote:</font></b>
+  <font color="#0000FF"><%=h u.count %></font>
+  </div>
+</td></tr>
+
+<tr><td>
+
+    <div id="add_com_link">
+    <% form_remote_tag :url => { :action => 'vote', :id=>u.id } do %>
+          <%= submit_tag "VOTE" %>
+        <% end %>    
+    </div>
+
+</td></tr>
+
+<% end %>
+</table>
+<%= will_paginate @users %>

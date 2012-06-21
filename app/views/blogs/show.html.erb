@@ -1,0 +1,14 @@
+
+<p>
+  <b>Title:</b>
+  <%=h @blog.title %>
+</p>
+
+<p>
+  <b>Body:</b>
+  <%=h @blog.body %>
+</p>
+
+
+<p class="links"><%= link_to 'Edit', edit_blog_path(@blog) %></p>
+<p class="links"><%= link_to 'Back', blogs_path %></p>

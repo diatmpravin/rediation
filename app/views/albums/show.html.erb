@@ -1,0 +1,19 @@
+<% @album.photos.each do |photo| %>
+  <%= image_tag photo.data.url, :class=>'image_size' %><%= photo.tag %>
+<% end %>
+
+<table>
+  <tr>
+    <td><b>Name:</b></td>
+    <td><%=h @album.name %></td>
+</tr>
+
+<tr>
+    <td><b>Description:</b></td>
+    <td><%=h @album.description %></td>
+</tr>
+<tr>
+    <td><div id="add_com_link"><%= link_to 'Add More Photo', edit_album_path(@album) %></div></td>
+    <td><div id="add_com_link"><%= link_to 'Modify Album', albums_path %></div></td>
+</tr>
+</table>

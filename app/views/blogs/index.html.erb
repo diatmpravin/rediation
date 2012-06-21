@@ -1,0 +1,21 @@
+<fieldset>
+<legend><div id="asd"><h1>Your all Blogs are hear</h1></div></legend>
+
+<table>
+<% @blogs.each do |blog| %>
+ <% if blog.user_id=session[:user_idd] -%>
+  <tr>
+    <td><b><%=h blog.title %></b></td>
+    <td><%=h blog.body %></td>
+    <td><h3><%= link_to 'Show', blog %></h3></td>
+    <td><h3><%= link_to 'Edit', edit_blog_path(blog) %></h3></td>
+    <td><h3><%= link_to 'Destroy', blog, :confirm => 'Are you sure?', :method => :delete %></h3></td>
+  </tr>
+  <% end -%>
+<% end %>
+</table>
+</fieldset>
+<br />
+
+<p class="links"><%= link_to 'New blog', new_blog_path %></p>
+<%= will_paginate @blogs %>

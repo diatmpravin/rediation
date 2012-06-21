@@ -1,0 +1,18 @@
+<fieldset>
+    <% if !f.object.new_record? %>
+        <%= image_tag f.object.data.url %>
+    <% end %>
+    <table>
+     <tr>
+       <td>
+          Tag:<%= f.text_field :tag, :size=>"15px" -%>
+          <%= f.file_field :data -%>
+        </td>
+       </tr> 
+       <tr>
+         <td>       
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<%= delete_photo(f) %>
+       </td>
+     </tr>
+    </table>     
+</fieldset>

@@ -1,0 +1,177 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+       "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <meta http-equiv="content-type" content="text/html;charset=UTF-8" />
+  <title>Welcome to : <%= controller.action_name %></title>
+<%= stylesheet_link_tag 'radiation', :media=>"all" %>
+ <%= javascript_include_tag :defaults %>
+ <%= javascript_include_tag "FCKEditor/fckeditor.js" %>
+</head>
+<body>
+<div id="wrapper">
+<!-- start header -->
+<div id="header">
+	<div id="logo">
+		<h1><a href="#"><span>Rediation</span></a></h1>
+	</div>
+	<div id="menu">
+		<ul id="main">
+			<li class="current_page_item"><%= link_to 'Home', :controller=>'start', :action=>'index' %></li>
+			<li><%= link_to 'About Us', :controller=>'user', :action=>'about_project' %></li>
+			<li><%= link_to 'Blog', :controller=>'blogs', :action=>'view' %></li>
+			<li><%= link_to 'Contact Me', :controller=>'admin', :action=>'contact_us' %></li>
+      <li><%= link_to 'LogOut', :controller=>'user', :action=>'logout' %></li>
+		</ul>
+	</div>
+	
+</div>
+<!-- end header -->
+	<!-- start page -->
+	<div id="page">
+		<div id="sidebar1" class="sidebar">
+			<ul>
+				<li>
+					<h2>Social Links</h2>
+					<ul>
+						<li><%= link_to 'Image Upload', :controller=>'albums', :action=>'index' %></li>
+						<li><%= link_to 'Compose Mail', :controller=>'emailer', :action=>'index' %></li>
+            <li><%= link_to 'Vote to Blogger', :controller=>'user', :action=>'profile' %></li>
+						<li><%= link_to 'Create Blog', :controller=>'blogs', :action=>'index' %></li>
+            <li><%= link_to 'Upload Excel file to database', :controller=>'user', :action=>'csv_index' %></li>
+            <li><%= link_to 'Send Sms', :controller=>'user', :action=>'sms' %></li>
+            <li><%= link_to 'Vedio Upload', :controller=>'user', :action=>'vedio' %></li>
+          </ul>
+				</li>
+				<li>
+					<h2>Invite Friend</h2>
+            <table>
+               <tr>
+                <td>Email Id</td>
+                <td>:</td>
+                <td><input type="text" name="email" id="email"  size="15px" /></td>
+               </tr>
+               <tr>
+                <td>Msg</td>
+                <td>:</td>
+                <td><input type="text" name="msg" id="msg" size="15px" /></td>
+               </tr>
+               <tr>
+                <td><%= button_to 'Send' %></td>
+                <td></td>
+                <td><input type="reset" name="res" id="res"  /></td>
+               </tr>
+              </table>  
+				</li>
+			</ul>
+		</div>
+		<!-- start content -->
+		<div id="content">
+			<div class="post">
+				<h1 class="title"><p class="byline"><b>Welcome to:<%= session[:user_idd] %></b></p></h1>
+				<div class="entry">
+
+              <% if flash[:notice] -%>
+                <div id="notice"><%= flash[:notice] %></div>
+              <% end -%>
+              
+
+          <p style="color: green"><%= notice %></p>
+
+          <%= yield %>
+
+
+         <!-- <% if ENV["RAILS_ENV"] == "development" %>
+              <%= debug(params) %>
+              <hr>
+              <%= debug(session) %>
+              <hr>
+              <%= debug(request) %>
+          <% end %>
+          -->
+          
+				</div>
+			</div>
+			
+			
+		</div>
+		<!-- end content -->
+		<!-- start sidebars -->
+		<div id="sidebar2" class="sidebar">
+			<ul>
+          <li>
+					<h2>NOT in USE</h2>
+					<ul>
+						<li><%= link_to 'Post Job' %></li>
+						<li><%= link_to 'Recent Posted Job ' %></li>
+						<li><%= link_to 'All Conections' %></li>
+            <li><%= link_to 'Add ConectionS' %></li>
+						<li><%= link_to 'View Profiles ' %></li>
+						<li><%= link_to 'Edit Profiles' %></li>
+					</ul>
+				</li>
+        <li>
+						<div>
+            
+            <% if logged_in? -%>
+            
+              <h2>Chat To</h2>
+              
+              Abhay</br>
+              Rravin</br>
+              Rohit</br>
+              Vikash</br>
+            
+            <% else -%>
+            
+            <h2>Login</h2>
+              <%= form_tag :controller=>'user', :action=>'login' %>
+              <table>
+               <tr>
+               
+                    <td>User Id:</td>
+                    <td>:</td>
+                    <td><%= text_field("userform", "user_id",:size=>"15px" ) %></td>
+                                                  
+               </tr>
+               <tr>
+               
+                    <td>Password:</td>
+                    <td>:</td>
+                    <td><%= password_field("userform", "password",:size=>"15px" )%></td>
+               
+               </tr>
+               <tr>
+               
+                    <td><%= check_box("userform", "remember_me" )%></td>
+                    <td>:</td>
+                    <td>Remember Me</td>
+               
+               </tr>
+               <tr>
+               
+                    <td><input type="submit" value="LOGIN" /></td>
+                    <td></td>
+                    <td><font color='#FF0000'><%= link_to 'Forgot Password' %></font>&nbsp;&nbsp;&nbsp;&nbsp;<font color='#00CC00'><p class="links"><%= link_to 'Sign Up', :controller=>'user', :action=>'registration' %></p></font></td>
+
+              </tr>
+              </table>
+            
+            <% end -%>
+							
+            </div>
+				</li>
+				
+			</ul>
+		</div>
+		<!-- end sidebars -->
+		<div style="clear: both;">&nbsp;</div>
+	</div>
+	<!-- end page -->
+</div>
+<div id="footer">
+	<p class="copyright">&copy;&nbsp;&nbsp;2011 All Rights Reserved &nbsp;&bull;&nbsp; by Pravin Mishra.</p>
+</div>
+</body>
+</html>

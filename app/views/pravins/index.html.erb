@@ -1,0 +1,20 @@
+<h1>Listing pravins</h1>
+
+<table>
+  <tr>
+    <th>Name</th>
+  </tr>
+
+<% @pravins.each do |pravin| %>
+  <tr>
+    <td><%=h pravin.name %></td>
+    <td><%= link_to 'Show', pravin %></td>
+    <td><%= link_to 'Edit', edit_pravin_path(pravin) %></td>
+    <td><%= link_to 'Destroy', pravin, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New pravin', new_pravin_path %>

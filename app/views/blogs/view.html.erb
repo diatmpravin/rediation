@@ -1,0 +1,39 @@
+
+<div id="asd"><h1>Recently updated Blogs are hear</h1></div>
+
+<table width="100%">
+<% @blogs.each do |blog| %>
+  
+  <tr>
+    <td><h3><%= link_to(blog.title, :action=>'show_recent', :id=>blog.id ) %></h3></td>
+    <td width="4%"></td>
+    <td><%=h truncate(blog.body.gsub(/<.*?>/,''),
+:length => 200 ) %><div id="update_comm">
+        </div></td>
+  </tr>
+  
+  <tr>
+    <td><h3>Posted By:</h3><%=h blog.user_id %></td>
+    <td width="4%"></td>
+    <td>
+      <div id="post_creation_date">
+        Posted <%= time_ago_in_words blog.created_at %> ago 
+
+          <% if blog.updated_at != blog.created_at %>
+              <br /> Modified <%= time_ago_in_words blog.updated_at %> ago
+          <% end %></div>
+
+</td>
+  </tr>
+  
+  <tr>
+  
+    <td><div id="add_com_link"><%= link_to("Add Comment", :action=>'show_recent', :id=>blog.id ) %></div></td>
+    <td></td>
+    <td></td>
+  
+  </tr>
+  
+<% end %>
+</table>
+<%= will_paginate @blogs %>

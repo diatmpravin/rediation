@@ -1,0 +1,25 @@
+<fieldset>
+<legend><div id="asd"><h3><i>Upload CVS  File from here </i></h3></div></legend>
+<% form_for :dump, :url=>{:controller=>"user", :action=>"csv_import"}, :html => { :multipart => true } do |f| -%>
+ <table>
+ <tr>
+  <td colspan="2"><h4>Your CVS file will contain two row, One for Name and another for Brokrage </h4></td>
+ </tr>
+   <tr>
+     <td>
+      <label for="dump_file">
+        Select a CSV File :
+      </label>
+     </td>
+     <td >
+       <%= f.file_field :file -%>
+     </td>
+   </tr>
+   <tr>
+     <td colspan='2'>
+       <%= submit_tag 'Submit' -%>
+     </td>
+   </tr>
+ </table>
+<% end -%>
+</fieldset>

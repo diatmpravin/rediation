@@ -1,0 +1,37 @@
+
+<% form_for(@blog) do |f| %>
+  <fieldset>
+   <legend><h2><i><div id="asd">Edit blog hear</div></i></h2></legend>
+
+  <%= f.error_messages %>
+	<table width="400px">
+      
+      <tr>
+  		
+          <td><%= f.label :title %><br /></td>
+          <td width="4"><strong>:</strong></td>
+          <td><%= f.text_field :title, :size=>'45' %></td>
+	  
+      </tr>
+  	  <tr>
+  
+          <td><%= f.label :body %><br /></td>
+          <td width="4"><strong>:</strong></td>
+          <td><%= f.text_area :body, :cols=>"35",:rows=>"8" %></td>
+  
+  	  </tr>
+  
+  	  <tr>
+
+          <td width="4"><%= f.submit 'Update' %></td>
+          <td width="4"></td>
+          <td><p class="links"><%= link_to 'Back', blogs_path %></p></td>
+  	  
+      </tr>
+    </table>  
+
+</fieldset>
+<% end %>
+
+<%= link_to 'Show', @blog %> |
+<%= link_to 'Back', blogs_path %>

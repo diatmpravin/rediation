@@ -1,0 +1,26 @@
+<h1>Editing album Details</h1>
+
+<% form_for(@album, :html => {:multipart => true}) do |f| %>
+  <div id="add_com_link">
+      <%= add_photo(f) %>
+   </div>   
+  <%= f.error_messages %>
+ <table>
+  <tr>
+    <td><%= f.label :name %></td>
+      <td width="4%"><strong>:</strong></td>
+    <td><%= f.text_field :name %></td>
+  </tr>
+  <tr>
+      <td><%= f.label :description %></td>
+      <td width="4%"><strong>:</strong></td>
+      <td><%= f.text_field :description %></td>
+  </tr>
+  <tr>
+    <td><div id="add_com_link"><%= link_to 'Back', albums_path %></div></td>
+    <td width="4%"></td>
+    <td><%= f.submit 'Create' %></td>
+  </tr>
+  
+  </table>
+<% end %>

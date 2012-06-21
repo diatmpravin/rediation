@@ -1,0 +1,36 @@
+<fieldset>
+        <legend><div id="asd"><h3><i>Send Email</i></h3></div></legend>
+        <% form_tag :action => 'sendmail' do %>
+          <table>
+            <tr>
+            
+              <td><b><label for="email_recipient">Recipient</label>:</b></td>
+              <td><%= text_field 'email', 'recipient' %></td>
+            
+            </tr>
+            <tr>
+            
+              <td><b><label for="email_subject">Subject</label>:</b></td>
+              <td><%= text_field 'email', 'subject' %></td>
+              
+             </tr>
+             <tr>
+
+              <td><b><label for="email_message">Message</label>:</b></td>
+              <td><%= fckeditor_textarea("album",
+                                    "email",
+                                    :toolbarSet =>'Easy',
+                                    :width => '350', :height => '300' ) %>
+              </td>
+            </tr>
+            
+            <tr>
+            
+              <td></td>
+              <td><%= submit_tag "Post Mail" %></td>
+              
+            </tr>
+           </table> 
+    
+  <% end %>
+</fieldset>
